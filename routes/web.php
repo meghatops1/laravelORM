@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/employee',EmployeeController::class);
 
+Route::get('/emplogin',[EmployeeController::class,'empLogin']);
+
+Route::post('/loginemp',[EmployeeController::class,'empLoginPost'])->name('emp');
+
+Route::get('/emptask',[EmployeeController::class,'index'])->middleware('empauth');
+Route::get('/logoutemp',[EmployeeController::class,'logoutEmp'])->name('emplogout');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
