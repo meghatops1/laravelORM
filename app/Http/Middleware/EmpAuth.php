@@ -17,8 +17,9 @@ class EmpAuth
     public function handle(Request $request, Closure $next)
     {
         
-        if(isset($request->session()->email) && $request->session()->email != ''){
+        if($request->session()->has('email')){
             print_r(($request->session()->all()));
+           // exit;
             return $next($request);
         }
         else{

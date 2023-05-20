@@ -12,4 +12,8 @@ class Employee extends Model
     protected $table="employees";
     protected $primaryKey = "emp_id";
     protected $fillable=['email','emp_name','password'];
+
+    public function images(){
+        return $this->morphOne(Image::class,"imageable");
+    }
 }

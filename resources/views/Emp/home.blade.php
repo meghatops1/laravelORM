@@ -10,6 +10,7 @@
     <h1>Wlcome to website:
         {{$user['emp_name'] ?? ''}}
         <a href="{{route('emplogout')}}">Logout</a>
+        <a href="{{route('employee.show',$user['emp_id'])}}">View Profile</a>
     </h1>
 </body>
 </html>
